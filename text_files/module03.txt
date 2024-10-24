@@ -1,0 +1,71 @@
+**PROTOCOLS & MODELS**:ok
+Define a common format & set of rules for exchanging messages between devices is called, __ __:network protcols
+Computer protocols include the following requirements, __, __ & __, __, __, __:encoding formatting encapsulation size timing delivery
+Process of converting info into another acceptable form for transmission, __:encoding
+Message Formats depend on the __ of message & the __ that is used to deliver message:type channel
+Message Size is important:ok
+Message timing includes the following, __ __, __ __, __ __:flow control response timeout access method
+Process of managing the rate of data transmission, __ __:flow control
+Defines how much information can be sent & speed at which it is delivered, __ __:flow control
+Network protocols that specify how long to wait for responses, __ __:response timeout
+Network protocols that specify actions to take if a timeout occurr, __ __:response timeout
+Process determining when person can send message, __ __:access method
+Message can be delivered in different ways, __, __ , __,:unicast multicast broadcast
+Protocols enable 2 or more devices to comms over network, (TCP, HTTPS, IP), __ __:communications protocols
+Protocols to secure data, provide authentication, data integrity, data encryption, (SSH, SSL, TLS) __ __:security protocols
+Protocols to enable routers to exchange route information, compare paths etc... (RIP, OSPF, BGP) __ __:routing protocols
+Protocols used for automatic detection of devices or services (DNS, DHCP) __ __ __:service discovery protocols
+Communication Protocol Functions (OK):ok
+Comm Function, ID the sender & receiver of messaged using predefined addressing scheme, __:addressing
+Comm Function, provides guaranteed delivery mechanism, __:reliability
+Comm Function, ensures that data flows at an efficient rate, __ __:flow control
+Comm Function, uniquely labels each transmitted segment of data, __:sequencing
+Comm Function, determines if data became corrupted during transmission, __ __:error detection
+Comm Function, contains information used for process-process comms between network apps, __ __:application interface
+**3.3.1 Network Protocol Suites**:ok
+Group of inter-related protocols necessary to perform a communication function, __ __:protocol suite
+TCP/IP (top to bottom), _, _, _, _ _:application transport internet network access
+TCP/IP, Application, name system protocol, __:dns
+TCP/IP, Application, host configuration, __:dhcp
+TCP/IP, Application, email, __, __, __:smtp pop3 imap4
+TCP/IP, Application, file transfer, __, __, __,:ftp sftp tftp
+TCP/IP, Application, web service, __, __, __:http https rest
+TCP/IP, Transport Layer, connected oriented, __ & connectionless, __:tcp udp
+TCP/IP, Internet Layer, Internet protocols, __, __, __:ipv4 ipv6 nat
+TCP/IP, Internet Layer, Messaging, __, __, __:imcpv4 icmpv6 imcpv6 nd
+TCP/IP, Internet Layer, Routing, __, __, __:bgp eigrp ospf
+TCP/IP, Network Access Layer, address resolution, __:arp
+TCP/IP, Network Access Layer, Data Link Protocols, __, __,:ethernet wlan
+**3.4 STANDARDS**:ok
+ACRONYM ISOC:internet society
+Reponsible for promoting opern development & evolution of internet, __:isoc
+ACRONYM IAB:internet architecture board
+responsible for overall mgmt & development of internet standards, __:IAB
+ACRONYM IETF:internet engineering task force
+Develops, updates, maintains internet & TCP/IP technologies, __:IETF
+ACRONYM IRTF:internet research task force
+Focused on long term research related to internet, __:IRTF
+ACRONYM ICANN:internet corporation for assigned names and numbers
+Coordinates IP address allocation, mgmt domain names, __:ICANN
+ACRONYM IANA:internet assigned numbers authority
+Responsible for overseeing & managing IP address allocation, domain name mgmt, protocol ID for ICANN, __:IANA
+*ELECTRONIC & COMMS STANDARDS*:ok
+ACRONYM IEEE:institute of electrical and electronics engineers
+Responsible for 802.3 Ethernet & 802.11 WLAN, __:IEEE
+ACRONYM EIA:electronic industrias alliance
+Responsible for electrical wiring standards, __:EIA
+ACRONYM TIA:telecommunications industry association
+Responsible for comm standards like VOIP, cell tower, satellites, devices, __:TIA
+ACRONYM ITU-T:International Telecommunications Union Telecommunication Standardization Sector
+Defines standards for video compression, internet protocol television, broadband comms, __:ITU-T
+**3.5 MODELS**:ok
+OSI MODEL (top to bottom), _, _, _, _, _, _, _:application presentation session transport network data link physical
+TCP/IP MODEl (top to bottom), _, _, _, _,:application transport internet network access
+**3.6 SEGMENTING MESSAGES**:ok
+Process of dividing data into smaller pieces to send over network, __:segmentation
+Segmentation benefits, __ __ & __ __:increases speed increases efficiency
+**3.7 ADDRESSING**:ok
+Data Link Layer destination & source address deliver data from one __ to another NIC on the __ network:nic same
+Network Layer source & destination address IP packet from source to __ destination:final
+Data Link Layer Ethernet Frame Header contains, destination & source __ address, AKA the __ address:MAC physical
+Network Layer IP Packet Header contains destination & source __ address, AKA the __ address:IP logical

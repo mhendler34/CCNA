@@ -1,0 +1,54 @@
+**ADDRESS RESOLUTION**:ok
+MAC Address, aka, __ address is used for __ to __ communication on SAME ETHERNET NETWORK:physical nic nic
+IP address, aka, __ address used to send packet from __ device to __ device, on same or remote network:logical source destination
+When the destination IP ADDR is on a remote network, the destination MAC will be the __ __:default gateway
+Routers examine the __ IPv4 ADDR to determine the best __ to __ the IPv4 packet:destination path forward
+When the router receives the Ethernet Frame, it _-__ the Layer __ information:de-encapsulates 2
+Using the __ IPv4 ADDR, the router determines the __-__ device & then __ the IPv4 packet with new __ __ frame:destination next-hop encapsulates data link
+The frame is __ to the data link tech that is associated with that __:specific link
+**ARP**:ok
+For IPv4 packets, MAC-IP matching is done with _ _ _:address resolution protocol
+For IPv6 packets, MAC-IP matching is done with _ _ _:icmpv6 neighbor discovery
+IPv4 ARP provides 2 functions, _-_ mapping & __ __:MAC-IP arp table
+Packet is sent to data link layer to be __ in Ethernet Frame:encapsulated
+The device refers to a __ stored in __ to the find the __ address the is mapped to the __ address:table memory mac ipv4
+If packet destination IPv4 is on same network as source IPv4 addr, devices searches __ table for __ IPv4 addr:arp destination
+If packet destination IPv4 is on different network as source IPv4, device search __ table for IPv4 of __ __:arp default gateway
+If device located IPv4 in its ARP table, its corresponding __ addr is used as the __ MAC address in the frame:mac destination
+If device DOES NOT locate IPv4 in arp cache, devices sends an __ __:arp request
+__ __ sent when device needs to know MAC that is associated with IP & DOES NOT have entry in arp table:arp request
+ARP messages are encapsulated direclty within __ __:ehternet frame
+There is no __ __ in arp requests:ipv4 header
+ARP REQUEST destination MAC address, __-__-__-__-__-__:ff-ff-ff-ff-ff-ff
+ARP REQUEST source MAC address is MAC address of __ of the ARP request:sender
+ARP REQUEST TYPE FIELD is ___:0x806
+Because ARP requests are __, they are flooded out __ ports, except __ port:broadcasts all receiving
+__ Ehternet NICs on LAN process the broadcasts:all
+All Ethernet NICs must deliver ARP request to __ __ for processing:operating system
+A Router (wil/will not) __ forward the broadcasts out other interfaces:will not
+Only __ device on the LAN will have an IP that matches the target IP in the ARP request:1
+All other devices (wil/will not) __ relpy:will not
+ARP REPLY destination MAC address is MAC address of __ of ARP __:sender request
+ARP REPLY source MAC address is MAC address of __ of ARP __:sender reply
+ARP REPLY TYPE FIELD is __:0x806
+__ the device that originally sent the ARP REQUEST will receive the __ ARP REPLY:only unicast
+If no device responds to the ARP REQUEST, the packet is __, b/c a frame cannot be created:dropped
+Each Device uses an ARP __ __ to remove ARP entries that have not been used for specified amount of time:cache timer
+COMMAND CISCO, display ARP table _ _ _:show ip arp
+COMMAND WINDOWS, display arp table __ -_:arp -a
+As a __ frame, an ARP REQUEST is received & processed by every device on the LOCAL network:broadcast
+With a Large network, lots of devices all accessing the network at the same time could case some __ in performance:reduction
+A threat actor could use ARP __ to perform an ARP __ __:spoofing poisoning attack
+DAI:dynamic arp inspection
+enterprise level switches use _ _ _ to mitigate arp poisoning attacks:dynamic arp inspection
+**ICMPv6 NEIGHBOR DISCOVERY**:ok
+IPv6 Neighbor Discovery Protocol is referred to as __ or ___:nd ndp
+ND provides __ __, __ __ & __ services:address resolution router discovery redirection
+ND uses __ to do this:IMCPv6
+ICMPv6 ND uses __ types of messages to perform address resolution, router discovery & redirection:5
+These messages are __ __, __ __, __ __, __ __, __:neighbor solicitation neighbor advertisement router solicitation router advertisement redirect
+__ __ & __ __ are used for address resolution:neighbor solicitation neighbor advertisement
+__ __ & __ __ are used for router discovery & SLAAC:router solicitation router advertisement
+__ is used to notify router of better __-__ selection:redirection next-hop
+ICMPv6 Neighbor Solication messages are sent using special Ethernet & IPv6 __ addresses:multicast
+__ addresses allow Ethernet NIC of receiving device to determine if msg is for __ without involving the __:multicast itself os

@@ -1,0 +1,25 @@
+**ROUTER INITAL CONFIG**:ok
+Enter PRIVILEGE EXEC mode__:enable
+**HOSTNAME**:ok
+Router> __:enable
+Router# __:configure terminal
+Router(config)# (device name R1( __:hostname R1
+**Secure PRIVILEGE EXEC**:ok 
+Router> __:enable
+Router# __:configure terminal
+Router(config)# __:enable secret password
+**Secure User EXEC mode**:ok
+Router(config)# __:line console 0
+Router(config-line)# __:password password
+Router(config-line)# __:login 
+**Secure remote Telnet**:ok
+Router(config)# (vty 0 4) __:line vty 0 4
+Router(config-line)# __:password password
+Router(config-line)# __:login
+Router(config-line)# __:transport input ssh telnet
+**Secure all password in CONFIG file**:ok
+Router(config)# __:service password-encryption
+**Provide legal notification**:ok
+Router(config)# __:banner motd delimiter message delimiter
+**SAVE CONFIG**:ok
+Router(config)# __:copy running-config startup-config

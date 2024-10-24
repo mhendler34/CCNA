@@ -1,0 +1,77 @@
+**PHYSICAL LAYER**:ok
+Organizations that govern physical layer standards, __, __, __, __, __:iso tia itu-t ansi ieee
+The physical layer address 3 functional areas, __ __, __, __:physical components encoding signaling
+Proces of converting a stream of bits into a predefined code, __:encoding
+The way bits are represented is called, __:signaling
+Capacity at which a medium can carry data is called, __:bandwidth
+Measures the amount of data that can flow from one place to another in a given amount of time, __ __:digital bandwidth
+Terms used to measure the QUALITY of BANDWIDTH, __, __, __,:latency throughput goodput
+Refers to the amount of time for data to travel from one point to another, __:latency
+Measure of the transfer of bits across the media over a given period of time, __:throughput
+Factors affecting throughput, __ of traffic, __ of traffic, & __:amount type latency
+Measure of USABLE data transferred over a given period of time, __:goodput
+GOODPUT EQUATION = __ - __ __ for establishing sessions, encapsulation:throughput traffic overhead
+__ is always lower than __, which is almost always lower than __:goodput throughput bandwidth
+**4.3 COPPER CABLING**:ok
+__ __ is the most common type of cabling used in networks today:copper cabling
+Copper media is limited by __ & __ __ :distance signal interference
+Data transmitted on copper cables as __ __:electrical pulses
+The farther a signal travels, the more it deteriorates, is called __:attenuation
+Eletrical Pulses are susceptible to __, __, & __:emi rfi crosstalk
+Radio waves, electromagnetic devices, fluorescent light are sources of __:EMI
+Disturbance caused by electric or magnetic fields of a signal on one wire to the adjacent wire, __:crosstalk
+Specifically, when electrical current flows through wire, it creates a small, __ field around the wire:magnetic
+Most common type of copper cabling is __:utp
+Used for interconnecting network hosts with intermediary networking devices, __:utp
+UTP has 2 ways to counter the effects of interference, __ & __ of __ per wire pair:cancellation number twists
+When 2 wires in an electrical circuit are placed closed together, their magnetic fieldss cancel out EMI/RFI, __:cancellation
+To further enhance the cancellation effect of paired circuit wires, designers vary the __ of __ per wire pair:number twists
+Provides better noise protection than UTP, __:stp
+However, STP is more __ & __ to install:expensive difficult
+2 Conductors that share the same axis is called, __:coaxial
+COAX connector types, __, __, __:BNC, n type f type
+Coaxial cables are used in the following situations, __ __ & __ __ __:wireless installations cable internet installations
+Cable type used to connect a host-switch or switch-router, __:straight through
+Cable type, both ends T568A or T568B, __:straight through
+Cable type used to connect like devices, __:crossover
+Ccalbe type, one end T568A other end T568B, __:crossover
+Cable type, proprietary to Cisco, connect workstation serial port to router console port, __:rollover
+T568A pin1:green white
+T568A pin2:green
+T568A pin3:orange white
+T568A pin4:blue
+T568A pin5:blue white
+T568A pin6:orange
+T568A pin7:brown white
+T568A pin8:brown
+T568B pin1:orange white
+T568B pin2:orange
+T568B pin3:green white
+T568B pin4:blue
+T568B pin5:blue white
+T568B pin6:green
+T568B pin7:brown white
+T568B pin8:brown
+**4.5 FIBER**:ok
+SMF:single mode fiber
+Consists of very small core, __:smf
+Uses expensive LASER, __:smf
+Long distance, spanning hundreds of kilometers, __:smf
+Refers to the spreading out of a light pulse over time, __:dispertion
+MMF:multimode fiber
+Consists of a larger core, __:mmf
+Uses LEDs to send light pulses, __:mmf
+Short distance, no greater than __km:550
+has greater dispersion, __:mmf
+Fiber is used as __ cabling, connect broadband to __, connect __ & __, and __ environments:backbone homes countries cities undersea
+Fiber Connectors, __, __, __, __:st sc lc 
+**4.6 WIRELESS MEDIA**:ok
+IEEE 802.11 is known as __ or __ __:wifi wireless lan
+IEEE 802.15 is known as __:bluetooth
+IEEE 802.16 is known as __:wimax
+IEEE 802.15.4 is known as __:zigbee
+Wireless LAN (WLAN) uses a __-based protocol known as __:contention csma/ca
+This is a wireless personal area network (WPAN), pairing devices up to 100m, __:bluetooth
+This wireless standard uses point-MULTIpoint topology to provide wireless broadband access, __:wimax
+This wireless standard used for low-data rate, low-power comms, IoT devices__:zigbee
+In general, a Wireless LAN (WLAN) requires a __ __ __ & __ __ __:wireless access point wireless nic adapters
