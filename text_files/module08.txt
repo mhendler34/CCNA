@@ -1,4 +1,4 @@
-**NETOWRKING**:ok
+**NETWORKING**:ok
 To perform end-end comms Network Layer performs __ basic functions:4
 FUNCTION 1, End devices must be configured with IP for ID to network, __ __ __:addressing end devices
 FUNCTION 2, The Network Layer __ PDU from Transport layer into a __:encapsulates packet
@@ -7,37 +7,57 @@ FUNCTION 3, The Network Layer provides __ to direct packets to destination host 
 The role of the router is to __ the __ path to a destination host:select best
 Each router a packet passes on its way to the destination is a called, a __:hop
 FUNCTION 4, Network Layer __ the packet if the destination IP within the header matches its own:de-encapsulates
-Network Layer Protocols specify the packet __ & __ used to carry data from one host to another:structure processing
+Unlike (OSI layer 4) __ Layer, which manages the data __ between __ running on each __:transport transport processes host
+Network Layer Protocols ( _& __) specify the packet __ & __ used to carry data from host to host:ipv4 ipv6 structure processing
 IP encapsulates data (transport layer segment) by adding an __ __:ip header
 the IP Header is used to deliver the packet to the __ __:destination host
 The process of encapsulating data layer by layer enables services to __ & __ without affecting other layers:develop scale
+IP Header is examined by __ _ devices (i.e. router) as it travels across the network to its destination:layer 3
 IP addressing information remains the __ from the time the packet leaves __ until it arrives at __:same source destination
-except when translated by __ __ __:network address translation
+Except when translated by __ __ __:network address translation
+Routers implement __ __ to __ packets between networks:routing protocols route
+Routing performed by these __ devices examines the __ __ addressing in the packet __:intermediary network layer header
+The data portion of the packet (encapsulated transport layer PDU) remains __ during the network layer process:unchanged
+**Characteristics of IP**:ok
 IP was designed as a protocol with __ __:low overhead
+IP was NOT designed to __ & __ the flow of packets:track manage
+The __ layer or layer __ (OSI) is designed to __ & __ the __ of packets:transport 4 track manage flow
 These are the basic characteristics of IP, __, __ __, __ __:connectionless best effort media independent
-There is no __ with the destination established before sending data packets:destination
+There is no __ with the __ established before sending data packets:connection destination
 Meaning, no dedicated end-end connection is created by IP before sending data, __:connectionless
+IP requires no initial exchange of __ __ to establish _-_ connection before packets are __:control information end end forwarded
+IP does NOT require __ fields in the header to maintain established connection:additional
+This process greatly reduces the __ of IP:overhead
+However, with no pre-established end-end connection, senders are __ whether __ devices are __ & __:unaware destination present functional
+Nor are senders aware if destination devices __, __, or __ the packet:receive access read
+IP does NOT guarantee that all packets that are delivered, are in fact, __:received
+__ means that IP does NOT have capability to manage & recover from undelivered packets:unreliable
 Cannot guarantee that packet will be delivered without errors, __ __:best effort
 IP is inherently __ because packet delivery is not __:unreliable guaranteed
-__ means that IP does NOT have capability to manage & recover from undelivered packets:unreliable
+If out of order packets are delivered, its up to the __ __ services to resolve these issues:upper layer
+This allows IP to function very __:efficiently
+The __/__ protocol suite, __ is the role of the TCP protocol in the __ layer:tcp/ip reliability transport
 IP operation is __ of the __ carrying the data:independent medium
 IP packets can be carried as __ signals over copper, __ signals over fiber or __ signals over wireless:electrical optical radio
 The OSI model __ __ layer is responsible for preparing IP packet for transmission over comms medium:data link
 There is ONE MAJOR characteristc of MEDIA that Network Layer considers, __ __ of the __ that medium can transport:maximum size pdu
 (ACRONYM) MTU:maximum transmission unit
 The __ __ layer passes the __ up to the __ layer:data link mtu network
+The __ layer then determines how __ packets can be:network large
 Process of splitting up packet when forwarding, is called, __:fragmentation
-__ packets cannot be fragmented by the router, only __ packets can:ipv6 ipv4
+A router may have to fragment an IPv4 packet when forwarding to medium with smaller __:mtu
+Fragmentation causes __:latency
+__ packets cannot be fragmented by the router, only __ packets can be fragmented:ipv6 ipv4
 **IPv4**:ok
 SIGNIFICANT fields in IPv4 Header:ok
+IPv4 Packet Header is __ Bytes:20
 Contains 4-bit value set to 0100 that ID this an as IPv4 packet, __:version
 Version, contains __-bit value of __ that ID this an IPv4 packet:4 0100
 The __ __ field contains 8-bit used to determine priority of each packet:differentiated service
-DiffServm contains __-bit field used to determine __ of each __:8 priority packet
+DiffServ contains __-bit field used to determine __ of each __:8 priority packet
 8-bit field that is used to limit the lifetime of a packet, _ _ _:time to live
 TTL, contains __-bit field that is used to __ the __ of a __:8 limit lifetime packet
 This field is used to ID the next level protocol, __:protocol
-Protocol, this field is used to the ID the next level __:protocol
 This is used to detect corruption in the IPv4 header, __ __:header checksum
 Header Checksum, used to detect __ in the IPv4 __:corruption header
 Contains 32-bit value that represents the source IPv4 address in packet, __ __ __:source ipv4 address
@@ -45,9 +65,18 @@ the source IPv4 address is always a __ address:unicast
 Contains 32-bit value that represents the destination IPv4 address, __ __ __:destination ipv4 address
 the destination IPv4 address can be a __ __ or __ address:unicast multicast broadcast
 Limitations of IPv4, address __, no end-end __, increased network __:depletion connectivity complexity
+While __ has extended the lifespan of IPv4:NAT
+__ was only meant as a transition  to __:NAT ipv6
+NAT, in its various implementations causes additional __, creating __ & making __ more difficult:complexity latency troubleshooting
 **IPv6**:ok
-Improvements that IPv6 provide, increased __, improved packet __, eliminates __:address handling nat
+Task force that lead to development of IPv6, __ __ __ __:internet engineering task force
+IPv6 overcomes the __ of IPv4:limitations
+Improvements that IPv6 provide, increased __ __, improved packet __, eliminates __:address space handling nat
+One of major design improvement of IPv6 over IPv4 is __ __:simplified header
+IPv4 header is __ length at __ bytes:variable 20
+IPv6 header is __ length at __ bytes:fixed 40
 SIGNICANT fields in IPv6 Header:ok
+The IPv6 simplified header allows for more __ __ of IPv6 headers:efficient processing
 Contains 4-bit value set to 0110 that ID this an as IPv6 packet, __:version
 Version, contains __-bit value of __ that ID this an IPv6 packet:4 0110
 8-bit field is equivalent to DiffServ in IPv4, __ __:traffic class
@@ -57,18 +86,46 @@ This 20-bit field with the same flow label receive same handling, __ __:flow lab
 8-bit field replaces TTL in IPv4, __ __:hop limit
 128-bit field identifies the sending host, __:source
 128-bit field identifies the receiving host, __:destination
+Unlike IPv4, routers do not __ routed IPv6 packets:fragment
+**Host Forwarding Decision**:ok
+With IPv4 & IPv6, packets are always created at the __ host:source
+The __ host must be able to direct the __ to the __ host:source packet destination
+To do this, host __ __ create their own __ __:end devices routing table
+Another role of the __ layer is to direct packets between __:network hosts
 A host can send a packet to __, __ host or __ host:itself local remote
+A host can ping itself by sending a packet to the __ __ with IPv4 ADDR of __.__.__.__:loopback interface 127.0.0.1
+Pinging the loopback interface tests the __/__ protocol stack on the host:tcp/ip
+This is a destination host that is on the same network as the sending host, __ __:local host
+The source & destination hosts share the __ __ __:same network address
+This is a destination on a remote network, __ __:remote host
+The source & destination hosts DO NOT share the same __ __:network address
 The __ __ is a device that can route traffic to other networks:default gateway
+The __ end device determines whether the IP is on the same or remote network:source
+in IPv4, the source device uses its __ __ along with its __ ADDR & __ ipv4 ADDR to decide:subnet mask ipv4 destination
+In IPv6, the local __ __ the local network address (___) to all devices on the network:router advertises prefix
+When a source sends a packet to a remote destination, __ are needed:routers
+The process of identifying the best path to a destination is called, __:routing
+The Router connected to the local network segment is referred to as the __ __:default gateway
+**Default Gateway**:ok
+The __ __ is a network device that can route traffic to other networks:default gateway
+A default gateway is required to send traffic outside of the __ __:local network
+Having a default gateway configured creates a __ __ in the __ __ of the PC:default route routing table
 On WINDOWS the commands, __ __ or __-_ can display HOST routing table:route print netstat -r
-The ROUTING TABLE stores 3 types of entries, __ network, __ networks, __ __:directly remote default route
-The network routes entries are active router interface, __-__ networks:directly connected
-The network route entries are connected to other routers, __ __:remote networks
+**Routing**:ok
+The ROUTING TABLE stores 3 types of entries, __ __ network, __ networks, __ __:directly connected remote default route
+These network routes entries are active router interface, __-__ networks:directly connected
+Routers add a directly connected route when an interface is __ w/IP ADDR & is __:configured activated
+These network route entries are connected to other routers, __ __:remote networks
 Routers learn about __ __ either by being explicitly configured, or exchanging route information:remote networks
 Gateway of Last Resort is known as __ __:default route
 The __ __ is used when there is no better option:default route
-Routes that are manually configured, __ __:static routes
+Routers can learn about remote networks in 2 ways, __ or __:manually dynamically
+Remote Routes that are manually configured, __ __:static routes
 Appropriate for small network & when there are no redundant links, __ __:static routes
-Allows routerss to automatically learn about remote networks, __ __:dynamic routing
+Remote Routes that are automatically learned using a __ __ __:dynamic routing protocol
+Routers that use dynamic routing protocols __ routing information with other __:share routers
+If there is a change in network topology, routers share this information using the __ __ __:dynamic routing protocol
+If there is a change in network topolgy, routers automatically update their __ __:routing tables
 Common CISCO Router source codes:ok
 CISCO Command show routing table, __ __ __:show ip route
 Directly connected Local Interface IP address, __:L

@@ -1,0 +1,180 @@
+**IPv6**:ok
+Customer network has IPv6 connection to ISP & access content found on internet over IPv6, __ __:native ipv6
+3 migration techniques for IPv6, __ __, __, __:dual stack tunneling translation
+Allows IPv4 IPv6 to coexist on the same network segment, __ __:dual stack
+Devices that run both IPv4 IPv6 protocol stacks simultaneously, __ __:dual stack
+__ & __ are for transitioning to native IPv6 & only be used where __:tunneling translation needed
+Transporting IPv6 packet over IPv4 network, __:tunneling
+IPv6 packet is encapsulated in IPv4 packet, __:tunneling
+Allows for IPv6 enabled-devices to comms w/IPv4 enabled-devices, __:translatiion
+The technique for this IPv6 to IPv4 translations is known as _ _ _ _:network address translation 64
+***IPv6 Addressing Formats***:ok
+IPv6 addresses are __ bits:128
+IPv6 addresses are written as __ values:hexadecimal
+Every __ bits is represented by a __ value for a total of __ hexadecimal values:4 hexadecimal 32
+IPv6 addresses have __ 16-bit segments, or __ hextets:8
+A hextet refers to __ hexadecimal values:4
+RULE 1, __ leading __:omit zeroes
+RULE 2, __ colon:double
+Double Colon can replace any single, __ string of one or more __ consisting of all __:contiguous hextets zeroes
+If address has more than one contiguous string of 0000, bes practice is use double colon on __ __:longest string
+If the strings are equal, best practice is to use Double Colon on __ string:first
+***Unicast, Multicast, & Anycast***:ok
+IPv6 Address uniquely identifies an interface on IPv6 enabled device, __:unicast
+IPv6 Address is used to send single IPv6 packet to multiple destinations, __:multicast
+IPv6 Address is ANY IPv6 unicast address that can be assigned to multiple devices, __:anycast
+Anycast IPv6 Address is __ IPv6 __ address that can be assigned to multiple devices, __:any unicast
+Unlike IPv4, IPv6 does not have a __ address:broadcast
+The network portion of the IPv6 Address is called the __ __:prefix length
+The prefix length can range from __ to __:0 128
+The recommended prefix length for LANs is __:/64
+/64 is strongly recommended because __ __ __ uses 64bits for the interface ID:stateless address autoconfiguration
+Host portion of IPv6 is called the __ __:interface ID
+IPv6 Address uniquely identifies an interface on IPv6 enabled device, __:unicast
+IPv6 Unicast Address Types, __ __, _-_, __, __ __, __ __, __ __:global unicast link-local loopback unspecified address unique local embedded ipv4
+Unlike IPv4 Devices that only have a __ address:single
+IPv6 addresses typicalls have __ __ addresses:2 unicast
+1st IPv6 UNICAST address, __ __ __ :global unicast address
+2nd IPv6 UNICAST Address, __ __ __:link-local address
+(ACRONYM) GUA:global unicast address
+(ACRONYM) LLA:link-local address
+These are unique, internet routable addresses, __ __ __:global unicast address
+Required for every IPv6 enabled device, __ __ __:link-local address
+Used to communicate with other devices on the same local link, __ __ __:link-local address
+With IPv6 the term link refers to a __:subnet
+Confined to a single link, not routable beyond the Link (subnet) _ _ _:link-local address
+IPv6 global unicast address (GUAs) are globally __ & __ on the IPv6 internet:unique routable
+(ACRONYM) ICANN:internet committee for assigned names and numbers
+(ACRONYM) IANA:internet assigned numbers authority
+__ allocates IPv6 Address blocks to the 5 __:icann rir
+Currently, only GUA with the first 3 bits of _ _ _ or __/_ are being assigned:001 2000/3
+A (GUA)global unicast address has 3 parts, __ __ __, __ _, __ _:global routing prefix subnet id interface id
+The network portion of IPv6 ADDR that is assigned by ISP is _ _ _:global routing prefix
+It is common for ISP to assign a global routing prefix of __ to its customers:/48
+The area between the Global Routing Prefix & Interface Id, is the __ __:subnet id
+The size of the __ __ __ determines the size of the __ __:global routing prefix subnet id
+Equivalent to host portion in IPv4, __ __:interface id
+The term Interface ID is used because a single host may have __ interfaces, each having __ or __ IPv6 ADDR:multiple one more
+Unlike IPv4, in IPv6 all __ and all __ host addresses can be assigned:0 1
+All-1s can be used because __ addresses are not used in IPv6:broadcast
+All-0s can be used but is reserved as a __ address & only assigned to __:anycast routers
+Enables a device to comms with other IPv6 devices on same link & only that link (subnet) _-_ _:link-local address
+Packets with a source or destination __ cannot be __ beyond the link from which the packet originated:lla routed
+__ is not a requirement, but every IPv6 enabled device must have an __:gua lla
+If LLA is not __ configured, the device will __ create it own __ w/OUT comms with a __ server:manually automatically lla dhcp
+IPv6 ADDR LLA are in the __ range:fe80/10
+the /10 indicates the first 10 bits are _ _ _ _  _ _ _ _  _ _ _ _  _ _ _ _:1111 1110 10xx xxxx
+The first hextet has a range of __ to __ (binary): 1111 1110 1000 0000 1111 1110 1011 1111
+The first hextet has a range of __ to __ (hex):fe80 febf
+1.) __ use the __ to neighbor router to send __ __:routers lla routing updates
+2.) __ use the __ of the __ __ as the default-gateway:hosts lla local router
+Typically it is the __ or the router, NOT the __ that is used as the default gateway:lla gua
+**12.5 - DYNAMIC ADDRESSING for IPv6 GUA**:ok
+For the GUA, _ _ _, a device obtains IPv6 ADDR dynamically through _ _ _ _ _:global unique address internet control message protocol v6
+IPv6 routers periodically send out __ __ messages every 200 seconds to all IPv6 enabled devices on network:icmpv6 ra
+An __ message will also be in response to a host sending an __ __ message, which is a request for an RA message:ra icmpv6 rs
+RS messages are sent to all __ __ by hosts requesting addressing information:ipv6 routers
+RA messages are sent to all __ __:ipv6 nodes
+CISCO Command, (config#) enable router as IPv6 router, __ __-__:ipv6 unicast-routing
+The ICMPv6 RA message is a __ to a device on how to obtain an GUA:suggestion
+ICMPv6 RA messages include the following:ok
+This tells the device which network it belongs to __ __ & __ __:network prefix prefix length
+This is an IPv6 LLA, the source IPv6 Address of the RA message, _ _ _:default gateway address
+These are the addresses of the DNS servers & domain name, _ _ & _ _:dns addresses domain name
+There are 3 Methods for RA messages:ok
+METHOD 1, "I have everything you need (prefix, prefix length, default gateway" __:slaac
+METHOD 2, "Here is my info but you need other info like DNS from DHCPv6 Server" __ w/ __ __ __:slaac stateles dhcpv6 server
+METHOD 3, "I can give you default gateway. You need to ask stateful DHCPv6 Server for other info", _ _ (_ _):stateful dhcpv6 no slaac
+****METHOD 1 - SLAAC****:ok
+__ is a method that allows a device to create its own __ without the service of __:slaac gua dhcpv6
+Using SLAAC, devices rely on the __ __ messages of the local routers to obtain necessary info:icmpv6 ra
+With SLAAC By __, RA message suggests the receiving device use info in RA to create is own __ __:default ipv6 gua
+With SLAAC, The services of a __ __ are not required:dhcpv6 server
+SLAAC is __, which means there is __ __ __ that allocates GUAs:stateless no central server
+With SLAAC, the __ device use the info in the RA message to __ it own __:client create gua
+With SLAAC, 2 parts of the address is created as follows:ok
+With SLAAC, This is advertised in the RA message, __:prefix
+With SLAAC, This uses the EUI-64 process or generates a random 64-bit number, __ __:interface id
+Step #1, the __ sends an RA message with the __ for the __ __:router prefix local link
+Step #2, the __ uses __ to obtain a __ from the RA message & __ its own __ __:pc slaac prefix creates interface id
+****METHOD 2 - SLAAC & Stateless DHCPv6****:ok
+METHOD 2, A router interface can be configured to send a __ __ using __ & STATELESS __:router advertisment slaac dhcpv6
+METHOD 2, The RA message __ devices use the following information:suggests
+METHOD 2, (RA INFO) #1 __ to creates it own IPv6 __:slaac gua
+METHOD 2, (RA INFO) #2 The router __, which is the RA __ __ __, as the default gateway:lla source ipv6 address
+METHOD 2, (RA INFO) #3 A stateless __ __ to obtain other information such as __ __ __ & __ __:dhcpv6 server dns server address domain name
+METHOD 2, A stateless DHCP server distributes __ __ __ & __ __:dns server address domain names
+METHOD 2, A stateless DHCP server __ __ __ GUAs:does not allocate
+METHOD 2, Step #1, The __ sends an __ to all __ __, "I need addressing information":pc rs ipv6 routers
+METHOD 2, Step #2, The __ sends an __ message to all __ __ "Here is prefix, prefix-length & default gateway):router ra ipv6 nodes
+METHOD 2, Step #2, The router sends an RA message to all ipv6 nodes, "Here is __, _ _ & _ _ ):prefix prefix length default gateway
+METHOD 2, Step #3, The __ sends a __ __ message to all __ __:pc dhcpv6 solicit dhcpv6 servers
+METHOD 2, Step #3, DHCPv6 Solicit Message states "I used __ to create my __ ADDR & __ __, but I need other __":slaac ipv6 default gateway information
+****METHOD 3 - STATEFUL DHCPv6****:ok
+METHOD 3, A Router interface can be configured to send an __ using __ __ only:RA stateful dhcpc6
+METHOD 3, Stateful DHCPv6, a device can receive __, _ _, & _ _ _:gua prefix length dns server address
+METHOD 3, STATEFUL DHCPv6 RA message SUGGESTS the following:ok
+METHOD 3, (RA INFO)the router __, which is the source IPv6 Address for the __ __:lla default gateway
+METHOD 3, (RA INFO) A STATEFUL DHCPv6 Server to obtain, _, _ _, _ _ _ & other info:gua prefix length dns server address
+METHOD 3, Step #1, The __ sends an __ to all __ __ , "I need addressing information":pc rs ipv6 routers
+METHOD 3, Step #2, The __ sends an __ to all __ __ with (__ __) specified:router ra ipv6 nodes stateful dhcpv6
+METHOD 3, Step #2, Router RA messages states, "I am you _ _, but you need __ __ __ for your __ __ ":default gateway stateful dhcpv6 server ipv6 address
+METHOD 3, Step #3, The __ sends a __ __ message to all __ __:pc dhcpv6 solicit dhcpv6 servers 
+METHOD 3, Step #3, PC DHCPv6 Solicit Messages states, "I received __ __ but I need __ __ & other info":default gateway ipv6 address
+METHOD 3, A __ __ __ allocates & maintaints list of which device receives which IPv6 address:stateful dhcpv6 server
+NOTE** The __ __ address can only be dynamically obtained from the __ __:default gateway ra message
+NOTE** The __ or __ __ __ does NOT provide the default gateway address:stateless stateful dhcpv6 server
+****EUI-64 Process vs Randomly Generated***:ok
+When the RA message is either __ or __ with __ __, the client must generate its own __ __:slaac slaac stateless dhcpv6 interface id
+The Client knows the __ portion of the address from the __ message, but must generate it own __ __:prefix ra interface id
+The Interface ID can be created using either the __-__ process or a __ __ 64-bit number:eui-64 randomly generated
+Step #1, The __ sends an RA Message:router
+Step #2, The __ uses the __ in the __ message & uses either __-_ or __ 64-bit # to __ an __ __:pc prefix ra eui-64 random generate interface id
+The __ defined the __ __ __ (EUI) process:ieee extended unique identifier
+EUI PROCESS, uses the __ ADDR of client & inserts __ bits in the __ of __ to create __ __:mac 16 middle mac interface id
+MAC address are __ bits & made up of 2 parts, __ & __ __:48 oui device identifier
+The __ __ __(OUI) is the 1st __bits vendor code assigned by __:24 organizationally unique identifier 24 ieee
+The __ __ is the 2nd __ bits assigned by the vendor:device identifier 24
+EUI-64 INTERFACE ID is made of 3 parts:ok
+EUI-64 PART #1, 24-bit __ from MAC but the __ bit is __:oui 7th reversed
+EUI-64 the 7th bit is also known as the (U/L) bit which stands for __/__ bit:universally/local
+EUI-64 PART #2, The inserted __-bit value, __ (in hexdecimal):16 fffe
+EUI-64 PART #3, The 24-bit __ __ from MAC:device identifier
+EUI-64 PROCESS is as follows:ok
+EUI-64 STEP #1, __ the __ address between the __ & the __ __:devide mac oui device identifier
+EUI-64 STEP #2, __ the hexadecimal value __ which is binary _ _ _ _  _ _ _ _  _ _ _ _  _ _ _ _:fffe 1111 1111 1111 1110
+EUI-64 STEP #3, __ the 1st 2 Hexadecimal values to __ & __ the __bit or the (_/_)bit:convert binary flip 7th u/l
+QUESTION 1, Dynamic Addressing Method for GUA rely solely on contents of RA message for addressing:slaac
+QUESTION 2, Dynamic Addressing Method for GUA rely solely on DHCPv6 server for addressing _ _:stateful dhcpv6
+QUESTION 3, Dynamic Addressing Method for GUA IPv6 Config from RA & request DNS from DHCPv6 Server __ & __ __:slaac stateless dhcpv6
+****12.6 - DYNAMIC LLA****:ok
+All IPv6 Devices must have an __:lla
+Windows will typically use the same method for both SLAAC created GUA & LLA:ok
+Cisco Routers __ create an IPv6 LLA whenever a GUA is assigned to the interface:automatically
+By Default, Cisco Routers use the _-_ process to generate interface ID for all LLA:eui-64 
+A drawback to dynamically assigned LLA is its __ __ __:long interface id
+Recall that an LLA must be __ only on that __ or __:unique link network
+It is common to __ configure LLA:statically
+Serial Interfaces on Routers __ __ have MAC address:do not
+For Serial Interfaces on Routers, CISCO IOS uses the MAC addr of 1st available __ __:ethernet interface
+****12.7 - IPv6 MULTICAST****:ok
+Used to send a single packet to one or more destinations (multicast group) is a __ __:multicast address
+Multicast Address is used to send a __ packet to __ or __ destinations (__ __):single one more multicast group
+IPv6 Multicast Address have the PREFIX __:ff00/8
+IPv6 Multicast Addresses can ONLY be __ addresses not __ addresses:destination source
+There are 2 types of IPv6 Multicast Address, __-__ & __ __:well-known solicited node
+IPv6 Multicast Addresses that are ASSIGNED, __-__:well-known
+ASSIGNED Multicast Addresses are __ for __ groups or services:reserved predefined
+ASSIGNED Multicast Address is a __ address used to reach a __ of devices running a common __ or __:single group protocol service
+There are 2 Common IPv6 ASSIGNED Multicast Groups, __-__ and __-__:all-nodes all-routers
+This is the multicast group that all IPv6 Enabled devices join, __-__ group:all-nodes
+All-nodes multicast group address, __:ff02 double colon 1
+A packet sent to this group is __ & __ by all IPv6 __ on link:received processed interfaces
+This has the same effect as a __ address in IPv4:broadcast
+This is a multicast group that all routers join, __-__:all-routers
+Router joins this group when it is enabled an IPv6 router using the __ __-__ global config command:ipv6 unicast-routing
+A packet send to this group is __ & __ by all IPv6 __ on the link:processed received routers
+A __ __ multicast address is similar to the all-nodes multicast address:solicited nodee
+The ADVantage of a solicited node address is that its __ to a special __ __ __:mapped ethernet multicast address
+This allows the __ __ to filter the __ by examining the __ ADDR WITHOUT sending it to the __ __:ipv6 process
+This examination of MAC addr allows the device to see if it is intended __ of the __ __:target ipv6 packet

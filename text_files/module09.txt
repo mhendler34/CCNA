@@ -1,52 +1,87 @@
 **ADDRESS RESOLUTION**:ok
-MAC Address, aka, __ address is used for __ to __ communication on SAME ETHERNET NETWORK:physical nic nic
+There are 2 primary addresses assigned to a device on an Ethernet LAN, __ & __:mac ip
+MAC Address, aka, __ address is used for __ to __ communication on the __ __ __:physical nic nic same ethernet network
 IP address, aka, __ address used to send packet from __ device to __ device, on same or remote network:logical source destination
-When the destination IP ADDR is on a remote network, the destination MAC will be the __ __:default gateway
+Ethernet __ ADDR are used to deliver the __ __ frame with the __ IP packet from __ to __ on the same __:mac data link encapsulated nic nic network
+If the destination IP ADDR is on the same network, the __ MAC address will be that of the __ device:destination destination
+If the destination IP ADDR is on a remote network, the destination MAC will be the __ __:default gateway
 Routers examine the __ IPv4 ADDR to determine the best __ to __ the IPv4 packet:destination path forward
 When the router receives the Ethernet Frame, it _-__ the Layer __ information:de-encapsulates 2
-Using the __ IPv4 ADDR, the router determines the __-__ device & then __ the IPv4 packet with new __ __ frame:destination next-hop encapsulates data link
-The frame is __ to the data link tech that is associated with that __:specific link
+Using the __ IPv4 ADDR, the router determines the __-__ device:destination next-hop 
+& then __ the IPv4 packet with the new __ __ frame for the outgoing interface:encapsulates data link
+Along each link in a path, an __ __ is encapsulated in a __:ip packet frame
+The frame is __ to the data link technology that is associated with that __, (i.e.Ethernet):specific link
+If the next-hop device is the final destination, the destination MAC ADDR will be that of the device's __ __:ethernet nic
+How are IP ADDR of IP packets in data flow associated with MAC ADDR, IPv4 __ or IPv6 __ __ __:arp icmpv6 neighbor discovery
 **ARP**:ok
+When a device sends Ethernet Layer 2 frame, it has 2 ADDR, __ __ & __ __:destination mac source mac
+If the destination IP ADDR is on the same network, the __ MAC address will be that of the __ device:destination destination
+If the destination IP ADDR is on a remote network, the destination MAC will be the __ __:default gateway
 For IPv4 packets, MAC-IP matching is done with _ _ _:address resolution protocol
 For IPv6 packets, MAC-IP matching is done with _ _ _:icmpv6 neighbor discovery
-IPv4 ARP provides 2 functions, _-_ mapping & __ __:MAC-IP arp table
-Packet is sent to data link layer to be __ in Ethernet Frame:encapsulated
-The device refers to a __ stored in __ to the find the __ address the is mapped to the __ address:table memory mac ipv4
-If packet destination IPv4 is on same network as source IPv4 addr, devices searches __ table for __ IPv4 addr:arp destination
-If packet destination IPv4 is on different network as source IPv4, device search __ table for IPv4 of __ __:arp default gateway
+ARP provides 2 basic functions:ok
+ARP FUNCTION 1, __ __ ADDR to __ ADDR:resolving ipv4 mac
+ARP FUNCTION 2, __ a __ of __ to __ address mappings:maintaining table ipv4 mac
+**ARP FUNCTIONS**:ok
+When Packet is sent to data link layer to be __ in Ethernet Frame:encapsulated
+The device refers to a __ stored in __ to the find the __ address that is mapped to the __ address:table memory mac ipv4
+This table is stored temporarily in __ memory & is called the ARP __ or ARP __:RAM table cache
+If packet destination IPv4 is on SAME network as source IPv4 addr, devices searches __ table for __ IPv4 addr:arp destination
+If packet destination IPv4 is on DIFFERENT network as source IPv4, device search __ table for IPv4 of __ __:arp default gateway
 If device located IPv4 in its ARP table, its corresponding __ addr is used as the __ MAC address in the frame:mac destination
 If device DOES NOT locate IPv4 in arp cache, devices sends an __ __:arp request
-__ __ sent when device needs to know MAC that is associated with IP & DOES NOT have entry in arp table:arp request
-ARP messages are encapsulated direclty within __ __:ehternet frame
+**ARP REQUEST**:ok
+Sent when device needs to know MAC that is associated with IP & DOES NOT have entry in arp table, __ __:arp request
+ARP messages are encapsulated direclty within __ __: ethernet frame
 There is no __ __ in arp requests:ipv4 header
+ARP REQUEST is __ in an Ethernet Frame with the following __ information:encapsulated header
 ARP REQUEST destination MAC address, __-__-__-__-__-__:ff-ff-ff-ff-ff-ff
 ARP REQUEST source MAC address is MAC address of __ of the ARP request:sender
 ARP REQUEST TYPE FIELD is ___:0x806
 Because ARP requests are __, they are flooded out __ ports, except __ port:broadcasts all receiving
-__ Ehternet NICs on LAN process the broadcasts:all
+__ Ethernet NICs on LAN process the broadcasts:all
 All Ethernet NICs must deliver ARP request to __ __ for processing:operating system
+__ device must __ the ARP REQUEST to see if the __ IPv4 ADDR matches its __:every process target own
 A Router (wil/will not) __ forward the broadcasts out other interfaces:will not
 Only __ device on the LAN will have an IP that matches the target IP in the ARP request:1
 All other devices (wil/will not) __ relpy:will not
+**ARP REPLY**:ok
+__ the device w/the target IPv4 ADDR associated with ARP request will __ with an __ __:only respond ARP reply
+The ARP REPLY is __ in the Ethernet Frame using the following __ information:encapsulated header
 ARP REPLY destination MAC address is MAC address of __ of ARP __:sender request
 ARP REPLY source MAC address is MAC address of __ of ARP __:sender reply
 ARP REPLY TYPE FIELD is __:0x806
 __ the device that originally sent the ARP REQUEST will receive the __ ARP REPLY:only unicast
+After the ARP REPLY is received, the device will add the __ ADDR & __ ADDR to its __ __:ipv4 mac arp table
+Packets destined for that IPv4 ADDR can now be __ in frames using it __ MAC ADDR:encapsulated corresponding
 If no device responds to the ARP REQUEST, the packet is __, b/c a frame cannot be created:dropped
+Entries in the ARP Table are __ __:time stamped
 Each Device uses an ARP __ __ to remove ARP entries that have not been used for specified amount of time:cache timer
+**ARP in Remote COMMS**:ok
+When destination IPv4 is NOT on same network, source device needs to send the frame to its __ __:default gateway
+The default gateway is the __ of the __ __:interface local router
+When source device has packet w/IPv4 on remote network, it will __ that packet in a __ using the __ MAC ADDR of the __:encapsulate frame destination router
+The IPv4 ADDR of the default gateway is stored in the IPv4 __ of the host:configuration
+When host creates a packet for a destination, it __ the __ IPv4 ADDR with its own IPv4 ADDR:compares destination
+If the destination host is not on the same network, source checks its __ __ for an entry with IPv4 ADDR of the __ __:arp table default gateway
+If there is not an entry for default gateway, source uses the __ __ to determine the __ __ of the __ __:arp process mac address default gateway
 COMMAND CISCO, display ARP table _ _ _:show ip arp
 COMMAND WINDOWS, display arp table __ -_:arp -a
-As a __ frame, an ARP REQUEST is received & processed by every device on the LOCAL network:broadcast
+**ARP Issues**:ok
+As a __ frame, an ARP REQUEST is __ & __ by every device on the LOCAL network:broadcast received processed
 With a Large network, lots of devices all accessing the network at the same time could case some __ in performance:reduction
 A threat actor could use ARP __ to perform an ARP __ __:spoofing poisoning attack
+This technique is used by a threat actor to reply to an __ __ for an __ __ that belongs to another device:arp request ipv4 address
+The threat actor sends an __ __ with its own __ __:arp reply mac address
+The __ of the ARP reply will add the wrong __ __ to its __ __ & send these packets to the threat actor:receiver mac address arp table
 DAI:dynamic arp inspection
 enterprise level switches use _ _ _ to mitigate arp poisoning attacks:dynamic arp inspection
 **ICMPv6 NEIGHBOR DISCOVERY**:ok
 IPv6 Neighbor Discovery Protocol is referred to as __ or ___:nd ndp
 ND provides __ __, __ __ & __ services:address resolution router discovery redirection
-ND uses __ to do this:IMCPv6
+ND uses __ to do this:ICMPv6
 ICMPv6 ND uses __ types of messages to perform address resolution, router discovery & redirection:5
-These messages are __ __, __ __, __ __, __ __, __:neighbor solicitation neighbor advertisement router solicitation router advertisement redirect
+These messages are __ __, __ __, __ __, __ __, __:neighbor solicitation neighbor advertisement router solicitation router advertisement redirection
 __ __ & __ __ are used for address resolution:neighbor solicitation neighbor advertisement
 __ __ & __ __ are used for router discovery & SLAAC:router solicitation router advertisement
 __ is used to notify router of better __-__ selection:redirection next-hop

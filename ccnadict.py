@@ -3,6 +3,7 @@
 # File for all dictionaries in class_networking_app.py
 # ABSOLUTE PATH
 # '/home/mitchell/Code/projects/networking/text_files/mod1_terms.txt', 'r'
+"""
 # MODULE 1
 dictionary_1 = {}
 with open('text_files/module01.txt', 'r') as m:
@@ -97,7 +98,7 @@ with open('text_files/module07.txt', 'r') as m:
 sbj_mod7td = "Module 7: Ethernet Switching"
 dict_mod7td = dictionary_7
 
-
+"""
 # MODULE 8
 dictionary_8 = {}
 with open('text_files/module08.txt', 'r') as m:
@@ -111,7 +112,7 @@ with open('text_files/module08.txt', 'r') as m:
 sbj_mod8td = "Module 8: Network Layer"
 dict_mod8td = dictionary_8
 
-"""
+
 # MODULE 9
 dictionary_9 = {}
 with open('text_files/module09.txt', 'r') as m:
@@ -137,6 +138,7 @@ with open('text_files/module10.txt', 'r') as m:
 
 sbj_mod10td = "Module 10: Router Configuration"
 dict_mod10td = dictionary_10
+"""
 
 # MODULE 11
 dictionary_11 = {}

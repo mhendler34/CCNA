@@ -1,0 +1,86 @@
+***IPv4  ADDRESSING***:ok
+**11.1 - IPv4 Address Structure**:ok
+**11.2 - IPv4 Unicast, Broadcast, Multicast**:ok
+Refers to one device sending a message to one other device in one-one comms, __ transmission:unicast
+A unicast packet has a destination IP ADDR that is a __ ADDR which goes to a __ recipient:unicast single
+A source IP ADDR can only be a __ ADDR, b/c the packet can only originate from a __ source:unicast single
+IPv4 UNICAST host ADDR are in the range of _._._._ to _._._._:1.0.0.1 223.255.255.255
+Single host to send a single packet to a selected set of hosts that subscribe to multicast group:multicast
+Multicast messages __ traffic:reduce
+A multicast packet is a packet with a destination IP ADDR that is a __ address:multicast
+IPv4 has reserved the _._._._ to _._._._. address range as multicast:224.0.0.0 239.255.255.255
+Hosts that receive particular multicast packets are called __ __:multicast clients
+Each multicast group is represented by a __ IPv4 multicast destination address:single
+Routing protocols such as _ use multicast transmissions:ospf
+Refers to a device sending a message to all the devices on network in one-all comms, __ transmission:broadcast
+A broadcast packet has a destination IP ADDR with all __ in the __ portion:1 host
+IPv4 uses __ packets, however, IPv6 __ __ use broadcast packets:broadcast does not
+A broadcast packet must be processed by __ devices the SAME __ domain:all broadcast
+Identifies all hosts on the SAME network segment, is called a __ __:broadcast domain
+A broadcast my be __ or __:directed limited
+Sent to all hosts on specific network is a __ broadcast:directed
+A limited broadcast is sent to _._._._:255.255.255.255
+By default, routers __ __ forward broadcasts:do not
+Broadcast packet use __ on the network:resources
+Broadcast packets make __ receiving host on the network __ the packet:every process
+Broadcast traffic should be limited so that it __ __ adversely affect network performace:does not
+Routers __ broadcast domains:separate
+Because routers __ broadcast domains, __ networks can improve network performance by __ excessive broadcast traffic:separate subdividing eliminating
+In addition to the 255.255.255.255 boradcast address, each network has a __ __:broadcast address
+A network broadcast address is a called a __ __:directed broadcast
+To send data to all hosts in a network, a host can send a single packet that is addressed to the __ __ of that network:boradcast address
+Because of security concerns, directed broadcasts are __ __ by default:turned off
+CISCO global config command to turn off directed broadcasts, __ __ __-__: no ip directed-broadcasts
+***11.3 - Public & Private IPv4 Address***:ok
+Addresses which are globally routed between ISP routers are called, __ __ __:public ipv4 addresses
+Blocks are addresses which are used by internal hosts are called, __ __ __:private ipv4 addresses
+Private Addresses are defined in __ __:rfc 1918
+Private Addresses are sometimes referred to as __ __ __ __:rfc 1918 address space
+Class A private Address Range, _._._._ to _._._._:10.0.0.0 10.255.255.255
+Class B private Address Range, _._._._ to _._._._:172.16.0.0 172.31.255.255
+Class C private Address Range, _._._._ to _._._._:192.168.0.0 192.168.255.255
+Private Addresses are not __ __:globally routable
+The IETF does not consider __ IPv4 ADDR or __ as effective security measures:private NAT
+There are certain address such as __ ADDR & __ ADDR that cannot be assigned to hosts:network broadcast
+Special Address used by a host to direct traffic to itself, __ address:loopback
+Loopback address range _._._._ to _._._._ or more commonly identified as _._._._:127.0.0.0 127.255.255.254
+Loopback Addresses can be used to test __/__ configuration is operational:tcp/ip
+(ACRONYM) APIPA:automatic private ip addressing 
+APIPA is more commonly known as __ __ or as _-_ addresses:link local self-assigned
+Link Local address range _._._._ to _._._._:169.254.0.1 169.254.255.254
+Link Local Addresses are used by __ __ client to __-__ in the event that there are no DHCP servers avail:windows DHCP self-configure
+Designed to support extremely large network w/more than 16,000,000 hosts, __ __:class a
+Class A address range _._._._/_ to _._._._/_:0.0.0.0/8 127.0.0.0/8
+Designed to support moderate size networks with approx 65,000 hosts, __ __:class b
+Class B address range _._._._/_ to _._._._/_:128.0.0.0/16 191.255.0.0/16
+Designed to support small networks with 254 hosts, __ __:class c
+Class C address range _._._._/_ to _._._._/_:192.0.0.0/24 223.255.255.0/24
+Class D __ block _._._._ to _._._._:multicast 224.0.0.0 239.0.0.0
+Class E __ block _._._._ to _._._._:experimental 240.0.0.0 255.0.0.0
+Classful addressing has been replaced with __ addressing:classless
+Classless addressing __ the rules of class (A,B,C):ignores
+Public IPv4 network Addresses are allocated based on the __ of __ that can be __:number addresses justified
+IPv4 & IPv6 addresses are managed by the __ __ __ __:internet assigned numbers authority
+__ manages are allocates blocks of IP ADDR to the __ __ __:regional internet registries
+There are __ Regional Internet Registries (RIR):5
+*** 11.4 - Network Segmentation***:ok
+In an Ethernet LAN, devices use __ & __ to locate other devices:broadcasts arp
+ARP sends layer 2 __ to a __ IPv4 ADDR on the __ network to discover the associated __ ADDR:broadcasts known local mac
+Switches __ broadcasts out __ interfaces __ the interface on which it was __:forward all except received
+Routers __ __ __ broadcasts:do not forward
+When a router receives a broadcast is __ __ forward it out other interfaces:does not
+Therefore, routers __ broadcast __:segment domains
+Therefore, each router interface __ to a broadcast domain:connects
+Broadcasts are only __ within that specific broadcast domain:forwarded
+A Large Broadcast domain is a network that __ many __:connects hosts
+A problem with large broadcast domains is that these hosts can generate __ broadcasts:excessive
+Excessive broadcasts can result in __ network operations:slow
+The solution is reduce the size of the network to create smaller broadcast domains, process called, __:subnetting
+The basis of subnetting is using __ bits to create additional __:host subnets
+Subnetting __ overall network traffic & __ network performance:reduces improves
+Subnetting enables Admins to implement __ __:security policies
+Subnetting also __ number of devices by affected misconfigurations, mal intent, harware problems:reduces
+
+
+
+
